@@ -6,7 +6,6 @@ import asp.board.article.service.request.ArticleUpdateRequest;
 import asp.board.article.service.response.ArticlePageResponse;
 import asp.board.article.service.response.ArticleResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,9 +22,9 @@ public class ArticleController {
 
     @GetMapping("/v1/articles")
     public ArticlePageResponse readAll(
-            @Param("boardId") Long boardId,
-            @Param("page") Long page,
-            @Param("pageSize") Long pageSize
+            @RequestParam("boardId") Long boardId,
+            @RequestParam("page") Long page,
+            @RequestParam("pageSize") Long pageSize
 
     ){
         return articleService.readAll(boardId, page, pageSize);
